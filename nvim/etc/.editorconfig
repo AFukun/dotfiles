@@ -1,0 +1,27 @@
+# link to home
+# ln -s $HOME/.config/nvim/etc/.editorconfig $HOME/.editorconfig
+root=true
+
+[*]
+indent_style=space
+indent_size=2
+end_of_line = lf
+insert_final_newline = true
+charset=utf-8
+trim_trailing_whitespace=true
+
+[Makefile]
+indent_style=tab
+indent_size=4
+
+[*.{h,hpp,c,cpp}]
+indent_size=4
+
+[*.java]
+indent_size=4
+
+[*.py]
+indent_size=4
+
+[*.{sh,fish}]
+indent_size=4
