@@ -8,3 +8,12 @@ require('colorizer').setup {
   'lua',
   'vim',
 }
+
+-- installter
+require('mason').setup()
+
+-- commenter
+require('Comment').setup()
+
+-- surrounder
+require('nvim-surround').setup()

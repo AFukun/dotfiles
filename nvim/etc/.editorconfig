@@ -1,5 +1,3 @@
-# link to home
-# ln -s $HOME/.config/nvim/etc/.editorconfig $HOME/.editorconfig
 root=true
 
 [*]
@@ -15,9 +13,6 @@ indent_style=tab
 indent_size=4
 
 [*.{h,hpp,c,cpp}]
-indent_size=4
-
-[*.java]
 indent_size=4
 
 [*.py]

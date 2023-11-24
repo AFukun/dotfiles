@@ -5,6 +5,10 @@ require('packer').init {
 return require('packer').startup(function(use)
   -- package manager
   use 'wbthomason/packer.nvim'
+  use {
+    'williamboman/mason.nvim',
+    run = ':MasonUpdate',
+  }
 
   -- appearance
   use 'Shatur/neovim-ayu'
@@ -63,8 +67,8 @@ return require('packer').startup(function(use)
   use 'mhartington/formatter.nvim'
 
   -- utilities
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-surround'
+  use 'numToStr/Comment.nvim'
+  use { 'kylechui/nvim-surround', tag = '*' }
   use 'gpanders/editorconfig.nvim'
   use 'unblevable/quick-scope'
   use 'norcalli/nvim-colorizer.lua'

@@ -136,4 +136,4 @@ require('bufferline').setup {
 --   tab = '|',
 --   trail = ' ',
 -- }
-require('indent_blankline').setup {}
+require("ibl").setup()
