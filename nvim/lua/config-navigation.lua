@@ -1,13 +1,13 @@
-require('telescope').setup {
+require('telescope').setup({
   defaults = {
     vimgrep_arguments = {
       'rg',
+      '--color=never',
       '--no-heading',
       '--with-filename',
       '--line-number',
       '--column',
       '--smart-case',
-      '--fixed-strings',
       '--no-ignore-vcs',
     },
     file_ignore_patterns = { '.git/', '__pycache__' },
@@ -21,6 +21,9 @@ require('telescope').setup {
         preview_cutoff = 30,
       },
     },
+    preview = {
+      filesize_limit = 1, -- MB
+    },
     mappings = {
       i = {
         ['<C-n>'] = false,
@@ -32,12 +35,8 @@ require('telescope').setup {
   },
   pickers = {
     find_files = {
-      find_command = {
-        'fd',
-        '-t=f',
-        '-F',
-        '-E=.git',
-      },
+      hidden = true,
+      no_ignore = true,
       layout_strategy = 'horizontal',
       layout_config = {
         horizontal = {
@@ -48,4 +47,6 @@ require('telescope').setup {
       },
     },
   },
-}
+})
+
+require('harpoon').setup()

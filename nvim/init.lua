@@ -1,11 +1,11 @@
-require 'basics'
-require 'plugins'
-require 'appearance'
-require 'filetree'
-require 'finder'
-require 'diagnostic'
-require 'autocomplete'
-require 'lsp'
-require 'format'
-require 'utilities'
-require 'keymap'
+require('basics')
+require('keymaps')
+require('plugins')
+require('packages')
+require('config-autocomplete')
+require('config-essentials')
+require('config-filetree')
+require('config-formatters')
+require('config-lsp')
+require('config-navigation')
+require('config-theme')

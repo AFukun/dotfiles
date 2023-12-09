@@ -1,75 +1,45 @@
-require('packer').init {
-  compile_path = vim.fn.stdpath 'data' .. '/plugin/packer_compiled.lua',
-}
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function(use)
+require('lazy').setup({
   -- package manager
-  use 'wbthomason/packer.nvim'
-  use {
-    'williamboman/mason.nvim',
-    run = ':MasonUpdate',
-  }
-
-  -- appearance
-  use 'Shatur/neovim-ayu'
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  }
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-      'arkav/lualine-lsp-progress',
-    },
-  }
-  use {
-    'akinsho/bufferline.nvim',
-    requires = 'nvim-tree/nvim-web-devicons',
-  }
-  use 'lukas-reineke/indent-blankline.nvim'
-
-  -- file tree
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-  }
-
-  -- fuzzy finder
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-  }
-
-  -- lsp
-  use 'neovim/nvim-lspconfig'
-
+  { 'williamboman/mason.nvim' },
+  { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
   -- autocomplete
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip',
-    },
-  }
-
-  -- diagnostic
-  use {
-    'folke/trouble.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  }
-
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-cmdline' },
+  { 'hrsh7th/cmp-path' },
+  { 'dcampos/cmp-snippy' },
+  { 'dcampos/nvim-snippy' },
+  -- essentials
+  { 'numToStr/Comment.nvim' },
+  { 'kylechui/nvim-surround', version = '*', event = 'VeryLazy' },
+  -- filetree
+  { 'nvim-tree/nvim-tree.lua', version = '*', lazy = false, dependencies = { 'nvim-tree/nvim-web-devicons' } },
+  -- navigation
+  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'ThePrimeagen/harpoon', dependencies = { 'nvim-lua/plenary.nvim' } },
   -- formatter
-  use 'mhartington/formatter.nvim'
-
-  -- utilities
-  use 'numToStr/Comment.nvim'
-  use { 'kylechui/nvim-surround', tag = '*' }
-  use 'gpanders/editorconfig.nvim'
-  use 'unblevable/quick-scope'
-  use 'norcalli/nvim-colorizer.lua'
-end)
+  { 'mhartington/formatter.nvim' },
+  -- lsp
+  { 'neovim/nvim-lspconfig' },
+  { 'linrongbin16/lsp-progress.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+  -- theme
+  { 'folke/tokyonight.nvim', lazy = false, opts = {} },
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  { 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
+  -- { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
+})

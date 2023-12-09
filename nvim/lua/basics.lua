@@ -25,8 +25,4 @@ opt.shortmess = 'flmnxoOstTcF'
 opt.iskeyword = { 'a-z', 'A-Z', '48-57', '_', '-' }
 opt.mouse = 'a'
 opt.termguicolors = true
--- opt.guicursor = {
---   'n-v-sm-o:block',
---   'i-c-ci-ve:ver25',
---   'r-cr:hor25',
--- }
+opt.guicursor = 'n-v:block,i-ci-ve-c:ver25,r-cr-o:hor20'
