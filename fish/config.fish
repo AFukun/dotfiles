@@ -5,6 +5,7 @@ alias nvimrc "cd ~/dotfiles/nvim && nvim"
 alias fishrc "cd ~/dotfiles/fish && nvim config.fish"
 
 # fish
+set -g fish_term24bit 1
 set -g fish_autosuggestion_enabled 0
 set -g fish_prompt_pwd_dir_length 0
 set -g theme_date_format "+%H:%M"
