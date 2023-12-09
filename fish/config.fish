@@ -1,3 +1,6 @@
+if not type -q nvim
+    alias nvim "~/Applications/nvim.appimage"
+end
 alias nvimrc "cd ~/dotfiles/nvim && nvim"
 alias fishrc "cd ~/dotfiles/fish && nvim config.fish"
 
